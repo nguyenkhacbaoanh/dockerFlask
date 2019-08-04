@@ -5,11 +5,15 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
 # import model
-from core import models
+from main.model import project
 
-from core.controller import create_app, db
+# import blueprints
+from __init__ import blueprint
+
+from main import create_app, db
 
 app = create_app('dev')
+app.register_blueprint(blueprint)
 
 app.app_context().push()
 
@@ -26,7 +30,7 @@ def run():
 @manager.command
 def test():
     """runs the unit test."""
-    tests = unittest.TestLoader().discover('core', pattern='test*.py')
+    tests = unittest.TestLoader().discover('test', pattern='test*.py')
     result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
         return 0
