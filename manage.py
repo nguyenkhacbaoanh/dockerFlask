@@ -6,6 +6,8 @@ from flask_script import Manager
 
 # import model
 from main.model import project
+from main.model import blacklist
+from main.model import user
 
 # import blueprints
 from __init__ import blueprint

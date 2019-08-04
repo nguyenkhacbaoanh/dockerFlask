@@ -12,6 +12,17 @@ class ProjectDto:
         'git_password': fields.String(required=True, description='Git password')
     })
 
+class UserDto:
+    api = Namespace('user', description='user operations')
+
+    user = api.model('User', {
+        'login':        fields.String(required=True, description='The login\'s User, it should be email'),
+        'password':     fields.String(required=True, description='Password to log in'),
+        'firstname':    fields.String(required=True, description='First Name User'),
+        'lastname':     fields.String(required=True, description='Last Name User'),
+        'git_login':    fields.String(required=True, description='Github account\'s name'),
+        'git_password': fields.String(required=True, description='Github password')
+    })
 # class ProjectModel(object):
 #     def __init__(self):
 #         self.counter = 0
